@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PoliticaActivity">
+
+    <!-- titulo-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="politicas y terminos"
+            android:textAllCaps="true"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Este documento establece los términos y condiciones bajo los cuales el usuario puede utilizar esta aplicación. Al acceder a esta aplicación, el usuario acepta cumplir con los términos y condiciones aquí expuestos. Si no está de acuerdo con alguna parte de estos términos, no debe utilizar la aplicación."
+            android:textAlignment="textStart"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="La información recopilada a través de la aplicación se utilizará únicamente para fines internos y no se compartirá con terceros sin el consentimiento del usuario. Se implementan medidas de seguridad adecuadas para proteger la información del usuario y evitar accesos no autorizados. La aplicación puede contener enlaces a sitios web de terceros. No somos responsables del contenido de dichos sitios ni de las políticas de privacidad de los mismos. Recomendamos leer las políticas de privacidad de cada sitio que visite."
+            android:textAlignment="textStart"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nos reservamos el derecho de modificar estos términos en cualquier momento. Cualquier cambio será publicado en esta sección. Se recomienda que el usuario revise periódicamente esta política para mantenerse informado sobre los cambios."
+            android:textAlignment="textStart"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:padding="16dp"> <!-- Padding del LinearLayout si deseas -->
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:text="volver"
+            android:textAllCaps="true" />
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+

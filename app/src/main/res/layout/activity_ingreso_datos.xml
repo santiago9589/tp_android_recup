@@ -485,10 +485,5 @@
 
 
     </LinearLayout>
+</LinearLayout>
 
-
-    <!-- Ingreso de Datos de Inversión: La aplicación mostrará
-     una pantalla donde los usuarios podrán ingresar el monto,
-     la tasa de interés, el plazo y la entidad de ambas inversiones.
-     Estas inversiones pueden ser de tipo plazo
-     fijo o fondo común de inversión.-->
