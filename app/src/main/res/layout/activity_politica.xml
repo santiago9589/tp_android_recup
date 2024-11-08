@@ -62,7 +62,7 @@
         android:padding="16dp"> <!-- Padding del LinearLayout si deseas -->
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/voler_politica"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"

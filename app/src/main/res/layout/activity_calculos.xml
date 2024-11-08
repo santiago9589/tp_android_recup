@@ -81,7 +81,8 @@
                         android:layout_marginTop="20sp"
                         android:textAllCaps="true"
                         android:textSize="20sp"
-                        tools:text="resultado1" />
+                        android:id="@+id/res_rendimiento1"
+                         />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -114,7 +115,7 @@
                         android:layout_marginTop="20sp"
                         android:textAllCaps="true"
                         android:textSize="20sp"
-                        tools:text="resultado1" />
+                        android:id="@+id/res_roi1" />
 
                     <!-- rendimiento 1-->
 
@@ -151,7 +152,7 @@
                         android:layout_marginTop="20sp"
                         android:textAllCaps="true"
                         android:textSize="20sp"
-                        tools:text="resultado1" />
+                        android:id="@+id/res_rendimiento2" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -184,7 +185,7 @@
                         android:layout_marginTop="20sp"
                         android:textAllCaps="true"
                         android:textSize="20sp"
-                        tools:text="resultado1" />
+                        android:id="@+id/res_roi2"/>
 
                     <!-- rendimiento 2-->
 
@@ -213,7 +214,7 @@
                 android:layout_marginTop="50sp"
                 android:textAllCaps="true"
                 android:textSize="25sp"
-                tools:text="resultado de analisis" />
+                android:id="@+id/resultado_analisis"/>
 
 
 
@@ -233,7 +234,7 @@
             android:padding="16dp"> <!-- Padding del LinearLayout si deseas -->
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/button_volver"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"

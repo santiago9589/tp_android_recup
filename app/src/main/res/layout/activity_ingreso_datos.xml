@@ -63,6 +63,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="monto"
+
                             android:textAllCaps="true"
                             android:textSize="20sp" />
 
@@ -71,7 +72,8 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center"
                             android:layout_marginLeft="2dp"
-                            android:src="@drawable/coin_dollar" />
+                            android:src="@drawable/coin_dollar"
+                            />
 
 
                     </LinearLayout>
@@ -79,7 +81,9 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp" /> <!-- Margen entre TextView y EditText -->
+                        android:id="@+id/monto_1"
+                        android:layout_marginTop="8dp"
+                        android:inputType="number"/> <!-- Margen entre TextView y EditText -->
                 </LinearLayout>
 
                 <LinearLayout
@@ -115,7 +119,9 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp" /> <!-- Margen entre TextView y EditText -->
+                        android:layout_marginTop="8dp"
+                        android:id="@+id/tasa_1"
+                        android:inputType="number"/> <!-- Margen entre TextView y EditText -->
                 </LinearLayout>
             </LinearLayout>
 
@@ -159,7 +165,9 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp" /> <!-- Margen entre TextView y EditText -->
+                        android:layout_marginTop="8dp"
+                        android:inputType="number"
+                        android:id="@+id/plazo_1"/> <!-- Margen entre TextView y EditText -->
                 </LinearLayout>
 
                 <LinearLayout
@@ -195,7 +203,9 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp" /> <!-- Margen entre TextView y EditText -->
+                        android:layout_marginTop="8dp"
+                        android:inputType="text"
+                        android:id="@+id/entidad_1"/> <!-- Margen entre TextView y EditText -->
                 </LinearLayout>
             </LinearLayout>
 
@@ -284,7 +294,9 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp" /> <!-- Margen entre TextView y EditText -->
+                        android:id="@+id/monto_2"
+                        android:layout_marginTop="8dp"
+                        android:inputType="numberDecimal"/> <!-- Margen entre TextView y EditText -->
                 </LinearLayout>
 
                 <LinearLayout
@@ -320,6 +332,8 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/tasa_2"
+                        android:inputType="number"
                         android:layout_marginTop="8dp" /> <!-- Margen entre TextView y EditText -->
                 </LinearLayout>
             </LinearLayout>
@@ -364,6 +378,8 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/plazo_2"
+                        android:inputType="number"
                         android:layout_marginTop="8dp" /> <!-- Margen entre TextView y EditText -->
                 </LinearLayout>
 
@@ -400,6 +416,9 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/entidad_2"
+                        android:inputType="text"
+
                         android:layout_marginTop="8dp" /> <!-- Margen entre TextView y EditText -->
                 </LinearLayout>
             </LinearLayout>
@@ -454,16 +473,17 @@
             android:padding="16dp"> <!-- Padding del LinearLayout si deseas -->
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/btn_calcular"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:text="calcular"
+
                 android:textAllCaps="true" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btn_historial"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -472,7 +492,7 @@
                 android:textAllCaps="true" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btn_permisos"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
