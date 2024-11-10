@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -23,11 +24,11 @@ class HistorialActivity : AppCompatActivity() {
             insets
         }
 
-        var inversiones: MutableList<Inversiones> = mutableListOf()
+        var inversiones: MutableList<ParInversiones> = mutableListOf()
         val preferencesServ = getSharedPreferences("INVERSIONES", Context.MODE_PRIVATE)
         var gson = Gson()
         var json = preferencesServ.getString("inversiones_data",null)
-        val type = object : TypeToken<MutableList<Inversiones>>() {}.type
+        val type = object : TypeToken<MutableList<ParInversiones>>() {}.type
 
         var tvText = findViewById<TextView>(R.id.tv_historial)
         var btnVolver = findViewById<Button>(R.id.btn_volver_hist)
@@ -37,7 +38,7 @@ class HistorialActivity : AppCompatActivity() {
         inversiones = gson.fromJson(json,type)
 
         if(inversiones == null){
-            tvText.text = "No hay datos en la lista"
+            Toast.makeText(this, "No hay datos en la lista", Toast.LENGTH_SHORT).show()
         }else{
             for ((index,inversion) in inversiones.withIndex()){
                 var indexAdd = index+1

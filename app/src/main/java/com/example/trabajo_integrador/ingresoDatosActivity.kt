@@ -34,7 +34,7 @@ class ingresoDatosActivity : AppCompatActivity() {
         }
 
 
-        val inversiones: MutableList<Inversiones> = mutableListOf()
+        val inversionesList: MutableList<ParInversiones> = mutableListOf()
 
 
         // shared preferences
@@ -69,7 +69,7 @@ class ingresoDatosActivity : AppCompatActivity() {
 
         var editor = preferencesServ.edit()
         val gson = Gson()
-        var json = gson.toJson(inversiones)
+        var json = gson.toJson(inversionesList)
         editor.putString("inversiones_data",json)
         editor.apply()
 
@@ -127,22 +127,15 @@ class ingresoDatosActivity : AppCompatActivity() {
 
 
 
+                var inver1 =  Inversiones(monto1.toFloat(),plazo1.toFloat(),tasa1.toFloat(),entidad1,spinner1.selectedItem as String)
+                var inver2 =  Inversiones(monto2.toFloat(),plazo2.toFloat(),tasa2.toFloat(),entidad2,spinner2.selectedItem as String)
 
-                inversiones.add(Inversiones(Roi1.toString(),Roi2.toString()))
-                json = gson.toJson(inversiones)
+                inversionesList.add(
+                    ParInversiones(inver1,inver2)
+                )
+                json = gson.toJson(inversionesList)
                 editor.putString("inversiones_data",json)
                 editor.apply()
-
-
-                // configurar intent
-
-                var intent = Intent(this, CalculosActivity::class.java)
-                intent.putExtra("INVERSION_REND1", rendimiento1)
-                intent.putExtra("INVERSION_REND2", rendimiento2)
-                intent.putExtra("INVERSION_ROI1", Roi1)
-                intent.putExtra("INVERSION_ROI2", Roi2)
-                startActivity(intent)
-
 
 
                 etmonto1.text.clear()
@@ -161,6 +154,23 @@ class ingresoDatosActivity : AppCompatActivity() {
                 etentidad2.text.clear()
 
                 etplazo2.text.clear()
+
+
+                Toast.makeText(this, "Se agrego el registro con exito", Toast.LENGTH_SHORT).show()
+
+
+                // configurar intent
+
+                var intent = Intent(this, CalculosActivity::class.java)
+                intent.putExtra("INVERSION_REND1", rendimiento1)
+                intent.putExtra("INVERSION_REND2", rendimiento2)
+                intent.putExtra("INVERSION_ROI1", Roi1)
+                intent.putExtra("INVERSION_ROI2", Roi2)
+                startActivity(intent)
+
+
+
+
 
 
 

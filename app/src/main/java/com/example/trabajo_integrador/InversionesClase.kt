@@ -1,6 +1,9 @@
 package com.example.trabajo_integrador
 
 data class Inversiones(
-    var inv1: String? = null,
-    var inv2: String? = null
+    var monto: Float? = null,
+    var plazo: Float? = null,
+    var tasa: Float? = null,
+    var entidad: String? = null,
+    var tipo: String? = null
 )
