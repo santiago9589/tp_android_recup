@@ -1,8 +1,10 @@
 package com.example.trabajo_integrador
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -12,6 +14,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import java.util.Random
 
 class ingresoDatosActivity : AppCompatActivity() {
 
@@ -24,6 +30,10 @@ class ingresoDatosActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // shared preferences
+
+        val preferencesServ = getSharedPreferences("INVERSIONES", Context.MODE_PRIVATE)
 
         // spinners configuracion
 
@@ -102,7 +112,6 @@ class ingresoDatosActivity : AppCompatActivity() {
                 var montoFinal2 = monto2.toFloat() + rendimiento2
                 Roi2 = ((montoFinal2 - monto2.toFloat())/monto2.toFloat())*100
 
-
             }
 
             // configurar intent
@@ -114,6 +123,13 @@ class ingresoDatosActivity : AppCompatActivity() {
             intent.putExtra("INVERSION_ROI2", Roi2)
             startActivity(intent)
 
+
+            val date = Date()
+            val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+            val formattedDate = format.format(date)
+
+            var editor = preferencesServ.edit()
+            editor.putString(formattedDate.toString(),"(INV01-${Roi1}-${rendimiento1}) --- (INV02-${Roi2}-${rendimiento2})")
 
         }
 
