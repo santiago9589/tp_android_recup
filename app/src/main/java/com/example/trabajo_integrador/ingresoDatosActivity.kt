@@ -10,10 +10,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -31,9 +33,14 @@ class ingresoDatosActivity : AppCompatActivity() {
             insets
         }
 
+
+        val inversiones: MutableList<Inversiones> = mutableListOf()
+
+
         // shared preferences
 
         val preferencesServ = getSharedPreferences("INVERSIONES", Context.MODE_PRIVATE)
+
 
         // spinners configuracion
 
@@ -59,6 +66,12 @@ class ingresoDatosActivity : AppCompatActivity() {
         var btnHistorial = findViewById<Button>(R.id.btn_historial)
         var btnPermisos = findViewById<Button>(R.id.btn_permisos)
 
+
+        var editor = preferencesServ.edit()
+        val gson = Gson()
+        var json = gson.toJson(inversiones)
+        editor.putString("inversiones_data",json)
+        editor.apply()
 
 
 
@@ -98,49 +111,87 @@ class ingresoDatosActivity : AppCompatActivity() {
             if (monto1.isEmpty() || monto2.isEmpty() || tasa1.isEmpty() || tasa2.isEmpty() ||
                 entidad1.isEmpty() || entidad2.isEmpty() || plazo1.isEmpty() || plazo2.isEmpty()
             ) {
-                rendimiento1 = 4f
+                Toast.makeText(this, "Ingreso de datos es invalido", Toast.LENGTH_SHORT).show()
             } else {
                 var tasaParseada1 = (tasa1.toFloat() / 360) / 100
                 rendimiento1 =
                     (monto1.toFloat()) * (tasaParseada1) * (plazo1.toFloat())
                 var montoFinal1 = monto1.toFloat() + rendimiento1
-                Roi1 = ((montoFinal1 - monto1.toFloat())/monto1.toFloat())*100
+                Roi1 = ((montoFinal1 - monto1.toFloat()) / monto1.toFloat()) * 100
 
                 var tasaParseada2 = (tasa2.toFloat() / 360) / 100
                 rendimiento2 =
                     (monto2.toFloat()) * (tasaParseada2) * (plazo2.toFloat())
                 var montoFinal2 = monto2.toFloat() + rendimiento2
-                Roi2 = ((montoFinal2 - monto2.toFloat())/monto2.toFloat())*100
+                Roi2 = ((montoFinal2 - monto2.toFloat()) / monto2.toFloat()) * 100
+
+
+
+
+                inversiones.add(Inversiones(Roi1.toString(),Roi2.toString()))
+                json = gson.toJson(inversiones)
+                editor.putString("inversiones_data",json)
+                editor.apply()
+
+
+                // configurar intent
+
+                var intent = Intent(this, CalculosActivity::class.java)
+                intent.putExtra("INVERSION_REND1", rendimiento1)
+                intent.putExtra("INVERSION_REND2", rendimiento2)
+                intent.putExtra("INVERSION_ROI1", Roi1)
+                intent.putExtra("INVERSION_ROI2", Roi2)
+                startActivity(intent)
+
+
+
+                etmonto1.text.clear()
+
+                ettasa1.text.clear()
+
+                etentidad1.text.clear()
+
+                etplazo1.text.clear()
+
+
+                etmonto2.text.clear()
+
+                ettasa2.text.clear()
+
+                etentidad2.text.clear()
+
+                etplazo2.text.clear()
+
+
 
             }
 
-            // configurar intent
-
-            var intent = Intent(this, CalculosActivity::class.java)
-            intent.putExtra("INVERSION_REND1", rendimiento1)
-            intent.putExtra("INVERSION_REND2", rendimiento2)
-            intent.putExtra("INVERSION_ROI1", Roi1)
-            intent.putExtra("INVERSION_ROI2", Roi2)
-            startActivity(intent)
 
 
-            val date = Date()
-            val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-            val formattedDate = format.format(date)
 
-            var editor = preferencesServ.edit()
-            editor.putString(formattedDate.toString(),"(INV01-${Roi1}-${rendimiento1}) --- (INV02-${Roi2}-${rendimiento2})")
+
 
         }
 
-        btnPermisos.setOnClickListener{
+
+        btnPermisos.setOnClickListener {
             var intent = Intent(this, PoliticaActivity::class.java)
             startActivity(intent)
 
         }
 
+
+        btnHistorial.setOnClickListener {
+            var intent = Intent(this, HistorialActivity::class.java)
+            startActivity(intent)
+
+        }
+
     }
+
+
 }
+
 
 
 
